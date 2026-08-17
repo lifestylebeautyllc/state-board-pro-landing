@@ -1,9 +1,9 @@
 import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import founderPortrait from '../assets/life-style-barber-founder.jpeg';
-import yakimaImg from '../assets/yakima-testing-center-prov.jpg';
-import pascoImg from '../assets/pasco-testing-center-prov.jpg';
-import spokaneImg from '../assets/spokane-testing-center-prov.jpg';
+import founderPortrait from '../assets/life-style-barber-founder.webp';
+import yakimaImg from '../assets/yakima-testing-center-prov.webp';
+import pascoImg from '../assets/pasco-testing-center-prov.webp';
+import spokaneImg from '../assets/spokane-testing-center-prov.webp';
 import {
   Brain,
   Timer,
