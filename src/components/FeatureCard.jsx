@@ -20,7 +20,7 @@ export default function FeatureCard({
 
   return (
     <div
-      className="relative w-full min-h-[360px] cursor-pointer select-none [perspective:1000px]"
+      className="relative w-full min-h-[340px] sm:min-h-[360px] cursor-pointer select-none [perspective:1000px]"
       onClick={() => onToggle?.(id)}
       onKeyDown={handleKeyDown}
       tabIndex={0}
@@ -82,11 +82,11 @@ export default function FeatureCard({
         {/* ========================================================= */}
         <div className="absolute inset-0 w-full h-full rounded-2xl bg-slate-950 border border-amber-500/30 p-3 flex flex-col justify-between [transform:rotateY(180deg)] [backface-visibility:hidden] shadow-2xl overflow-hidden box-border">
           {/* Image Frame */}
-          <div className="relative flex-1 w-full rounded-xl overflow-hidden bg-slate-900 border border-white/10 flex items-center justify-center">
+          <div className="relative flex-1 w-full rounded-xl overflow-hidden bg-slate-900/90 border border-white/10 flex items-center justify-center">
             <img
               src={asset}
               alt={title}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-contain md:object-cover object-center rounded-lg p-1 md:p-0"
               loading="lazy"
             />
           </div>
