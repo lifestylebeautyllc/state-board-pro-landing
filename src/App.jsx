@@ -8,15 +8,17 @@ import BlogPost from './pages/BlogPost';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blog" element={<BlogList />} />
-          <Route path="blog/:slug" element={<BlogPost />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="w-full max-w-full overflow-x-hidden">
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="blog" element={<BlogList />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }

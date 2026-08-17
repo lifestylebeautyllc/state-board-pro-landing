@@ -31,14 +31,14 @@ export default function BlogPost() {
   }
 
   return (
-    <article className="min-h-[calc(100vh-80px)] bg-white py-16 sm:py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+    <article className="w-full max-w-full box-border min-h-[calc(100vh-80px)] bg-white py-14 sm:py-20 overflow-x-hidden">
+      <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 box-border">
         
         {/* Navigation Breadcrumb / Back Link */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-violet/80 hover:text-brand-violet transition-colors group"
+            className="min-h-[44px] inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-violet/80 hover:text-brand-violet transition-colors group py-2"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Washington State Board Insights</span>
@@ -46,35 +46,35 @@ export default function BlogPost() {
         </div>
 
         {/* Post Header */}
-        <header className="mb-10 pb-8 border-b border-slate-100">
+        <header className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-slate-100">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/10 text-brand-violet text-xs font-bold uppercase tracking-wider mb-4">
             <ShieldCheck className="w-3.5 h-3.5 text-brand-gold" />
             Official Prov & DOL Guide
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-violet tracking-tight mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-brand-violet tracking-tight mb-4 leading-tight">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
+          <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm font-medium">
             <Calendar className="w-4 h-4 text-brand-gold" />
             <span>Published on {post.date}</span>
           </div>
         </header>
 
         {/* Markdown Content */}
-        <div className="prose prose-lg prose-violet max-w-none prose-headings:text-brand-violet prose-headings:font-bold prose-a:text-brand-gold hover:prose-a:text-brand-violet transition-colors leading-relaxed">
+        <div className="prose prose-base sm:prose-lg prose-violet max-w-none prose-headings:text-brand-violet prose-headings:font-bold prose-a:text-brand-gold hover:prose-a:text-brand-violet transition-colors leading-relaxed">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
 
         {/* Post Footer Box */}
-        <div className="mt-14 pt-8 border-t border-slate-200">
-          <div className="rounded-2xl bg-brand-periwinkle/15 border border-brand-periwinkle/30 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 sm:mt-14 pt-8 border-t border-slate-200">
+          <div className="rounded-2xl bg-brand-periwinkle/15 border border-brand-periwinkle/30 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 box-border">
             <div>
-              <h3 className="text-lg font-bold text-brand-violet mb-1">
+              <h3 className="text-base sm:text-lg font-bold text-brand-violet mb-1">
                 Preparing for your Washington practical exam?
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-xs sm:text-sm text-slate-700">
                 Practice with real-time proctor audio, simulated timers, and kit checkers built specifically for Washington State.
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function BlogPost() {
               href="https://www.lifestyleexamedge.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 px-5 py-3 rounded-xl bg-brand-gold text-brand-violet font-extrabold text-sm hover:brightness-105 transition-all shadow-sm"
+              className="min-h-[44px] flex-shrink-0 px-5 py-3 rounded-xl bg-brand-gold text-brand-violet font-extrabold text-xs sm:text-sm hover:brightness-105 transition-all shadow-sm flex items-center justify-center"
             >
               Explore Study Suite
             </a>
