@@ -37,19 +37,65 @@ import {
   ExternalLink,
   MapPin,
   Layers,
-  Wrench
+  Wrench,
+  ChevronDown,
+  Calendar,
+  HelpCircle
 } from 'lucide-react';
+import { posts } from '../data/posts';
 
 export default function Home() {
   const { openDemoModal } = useOutletContext();
   const [activeTab, setActiveTab] = useState('all'); // 'all' | 'written' | 'practical'
   const [flippedCards, setFlippedCards] = useState({});
+  const [openFaq, setOpenFaq] = useState(0);
 
   const toggleCard = (id) => {
     setFlippedCards((prev) => ({
       ...prev,
       [id]: !prev[id]
     }));
+  };
+
+  const toggleFaq = (idx) => {
+    setOpenFaq((prev) => (prev === idx ? null : idx));
+  };
+
+  // SEO / GEO FAQ Data
+  const faqItems = [
+    {
+      question: 'What is the Washington State practical workstation footprint rule?',
+      answer:
+        'Washington practical exams administered through Prov, Inc. mandate that all candidate supplies, containers, and tools must remain strictly within a designated 30x30 inch workstation footprint throughout the examination without touching the floor or neighboring stations.'
+    },
+    {
+      question: 'How much does it cost to take or retake the WA State Board exam?',
+      answer:
+        'The total initial exam fee is $288 ($169 for the Written Theory exam and $119 for the Practical exam). Retakes cost the full individual test fee per attempt.'
+    },
+    {
+      question: 'Where are the official Prov practical testing facilities located in Washington?',
+      answer:
+        'Prov conducts official practical examinations at facilities across Washington State, including locations in Yakima, Pasco, and Spokane.'
+    },
+    {
+      question: 'How does State Board Pro help students pass on their first attempt?',
+      answer:
+        'State Board Pro provides Washington-specific timed exam simulations, proctor-paced audio cues, smart kit packing checklists, and 1,000+ targeted flashcards aligned directly with official candidate information bulletins.'
+    }
+  ];
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
   };
 
   // 1. Written Exam Prep Engine Card Data
@@ -567,6 +613,175 @@ export default function Home() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 4. SEO / GEO FAQ ACCORDION */}
+      {/* ========================================================= */}
+      <section
+        id="faq"
+        className="w-full max-w-full box-border bg-[#0e0c18] text-slate-100 py-16 sm:py-20 lg:py-24 relative overflow-hidden border-t border-indigo-500/10"
+      >
+        {/* Ambient background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/10 rounded-full blur-[130px] pointer-events-none" />
+
+        {/* Structured Data for SEO / GEO Rich Snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 box-border">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-400/25 bg-indigo-950/50 text-indigo-200 backdrop-blur-md shadow-sm text-xs font-bold uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-300" />
+              Frequently Asked Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+              Washington State Board FAQ
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed">
+              Prov practical guidelines, candidate workstation footprint rules, exam fees, and prep architecture.
+            </p>
+          </div>
+
+          {/* Accordion Container */}
+          <div className="space-y-4">
+            {faqItems.map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-slate-900/60 border border-indigo-500/20 backdrop-blur-sm overflow-hidden transition-all duration-200 hover:border-indigo-500/40"
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(idx)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${idx}`}
+                    id={`faq-question-${idx}`}
+                    className="w-full min-h-[56px] px-5 sm:px-7 py-5 flex items-center justify-between gap-4 text-left cursor-pointer group focus:outline-none focus:ring-2 focus:ring-amber-300/40 rounded-2xl"
+                  >
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-300 flex-shrink-0 group-hover:scale-105 transition-transform">
+                        <Sparkles className="w-4 h-4 text-amber-300" />
+                      </div>
+                      <span className="text-sm sm:text-base lg:text-lg font-bold text-white group-hover:text-indigo-200 transition-colors leading-snug">
+                        {item.question}
+                      </span>
+                    </div>
+
+                    <div className="flex-shrink-0 ml-2">
+                      <div className={`w-8 h-8 rounded-lg bg-white/5 border border-indigo-500/15 flex items-center justify-center text-slate-400 group-hover:text-amber-300 transition-all ${isOpen ? 'bg-amber-400/10 border-amber-400/30' : ''}`}>
+                        <ChevronDown
+                          className={`w-4 h-4 transform transition-transform duration-300 ${
+                            isOpen ? 'rotate-180 text-amber-300' : 'text-slate-400'
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </button>
+
+                  <div
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${idx}`}
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 sm:px-7 pb-6 pt-1 text-slate-300 text-xs sm:text-sm sm:leading-relaxed border-t border-indigo-500/10 mt-1 pl-[3.25rem] sm:pl-[4.25rem]">
+                        {item.answer}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 5. HOMEPAGE BLOG PREVIEW SECTION */}
+      {/* ========================================================= */}
+      <section
+        id="guides"
+        className="w-full max-w-full box-border bg-gradient-to-b from-[#0e0c18] via-[#141222] to-[#181622] text-slate-100 py-16 sm:py-20 lg:py-24 relative overflow-hidden border-t border-indigo-500/10"
+      >
+        {/* Ambient background glow */}
+        <div className="absolute top-10 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[110px] pointer-events-none" />
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 box-border">
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-400/25 bg-indigo-950/50 text-indigo-200 backdrop-blur-md shadow-sm text-xs font-bold uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              WA STATE BOARD INSIGHTS
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+              Essential Guides for Washington Candidates & Educators
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed">
+              Prov testing center breakdowns, 30x30 workstation rules, and exam retake fee guides.
+            </p>
+          </div>
+
+          {/* Cards Grid: 3 Clean Preview Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {posts.slice(0, 3).map((post) => (
+              <article
+                key={post.id}
+                className="w-full max-w-full box-border bg-slate-900/60 border border-indigo-500/20 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-indigo-400/40 hover:bg-slate-900/80 transition-all duration-300 shadow-xl group hover:shadow-indigo-500/10"
+              >
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-3">
+                    <Calendar className="w-3.5 h-3.5 text-amber-300" />
+                    <span>{post.date}</span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-amber-200 transition-colors mb-3 leading-snug">
+                    <Link to={`/blog/${post.slug}`} className="hover:underline underline-offset-2">
+                      {post.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-indigo-500/15 flex items-center justify-between">
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="min-h-[44px] text-xs sm:text-sm font-bold text-amber-300 hover:text-amber-200 transition-colors inline-flex items-center gap-1.5 group/link py-2"
+                  >
+                    <span>Read Guide</span>
+                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1.5 transition-transform" />
+                  </Link>
+
+                  <span className="text-xs text-indigo-300/70 font-medium flex items-center gap-1">
+                    <BookOpen className="w-3.5 h-3.5" /> 3 min read
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Subtle Bottom Link */}
+          <div className="mt-12 sm:mt-14 text-center">
+            <Link
+              to="/blog"
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-indigo-500/20 hover:border-indigo-500/40 text-xs sm:text-sm font-semibold text-indigo-200 hover:text-white transition-all group active:scale-95 shadow-sm"
+            >
+              <span>View All State Board Articles</span>
+              <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

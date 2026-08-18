@@ -12,7 +12,6 @@ import {
   CheckCircle,
   Globe,
   Store,
-  Sparkles,
   ChevronRight
 } from 'lucide-react';
 
@@ -203,6 +202,9 @@ export default function Layout() {
             <a href="/#features" className="text-slate-300 hover:text-indigo-200 transition-colors">
               Features
             </a>
+            <a href="/#faq" className="text-slate-300 hover:text-indigo-200 transition-colors">
+              FAQ
+            </a>
             <Link
               to="/blog"
               className={`transition-colors ${
@@ -342,6 +344,24 @@ export default function Layout() {
                   className="min-h-[44px] px-4 py-3 rounded-xl flex items-center justify-between text-base font-semibold text-slate-200 hover:bg-white/5 hover:text-indigo-200 transition-all"
                 >
                   <span>Features & Curriculum</span>
+                  <ChevronRight className="w-4 h-4 text-indigo-300/60" />
+                </a>
+
+                <a
+                  href="/#faq"
+                  onClick={handleNavClick}
+                  className="min-h-[44px] px-4 py-3 rounded-xl flex items-center justify-between text-base font-semibold text-slate-200 hover:bg-white/5 hover:text-indigo-200 transition-all"
+                >
+                  <span>State Board FAQ</span>
+                  <ChevronRight className="w-4 h-4 text-indigo-300/60" />
+                </a>
+
+                <a
+                  href="/#guides"
+                  onClick={handleNavClick}
+                  className="min-h-[44px] px-4 py-3 rounded-xl flex items-center justify-between text-base font-semibold text-slate-200 hover:bg-white/5 hover:text-indigo-200 transition-all"
+                >
+                  <span>WA Guides</span>
                   <ChevronRight className="w-4 h-4 text-indigo-300/60" />
                 </a>
 
