@@ -20,7 +20,7 @@ export default function BlogPost() {
           </p>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-gold text-brand-violet font-bold text-sm hover:brightness-105 transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-indigo-300 via-indigo-200 to-indigo-400 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all text-sm border border-indigo-200/50"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Articles</span>
@@ -48,7 +48,7 @@ export default function BlogPost() {
         {/* Post Header */}
         <header className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-slate-100">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/10 text-brand-violet text-xs font-bold uppercase tracking-wider mb-4">
-            <ShieldCheck className="w-3.5 h-3.5 text-brand-gold" />
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
             Official Prov & DOL Guide
           </div>
 
@@ -57,13 +57,13 @@ export default function BlogPost() {
           </h1>
 
           <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm font-medium">
-            <Calendar className="w-4 h-4 text-brand-gold" />
+            <Calendar className="w-4 h-4 text-amber-500" />
             <span>Published on {post.date}</span>
           </div>
         </header>
 
         {/* Markdown Content */}
-        <div className="prose prose-base sm:prose-lg prose-violet max-w-none prose-headings:text-brand-violet prose-headings:font-bold prose-a:text-brand-gold hover:prose-a:text-brand-violet transition-colors leading-relaxed">
+        <div className="prose prose-base sm:prose-lg prose-violet max-w-none prose-headings:text-brand-violet prose-headings:font-bold prose-a:text-brand-violet underline hover:prose-a:text-brand-violet/80 transition-colors leading-relaxed">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
 
@@ -82,7 +82,7 @@ export default function BlogPost() {
               href="https://www.lifestyleexamedge.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[44px] flex-shrink-0 px-5 py-3 rounded-xl bg-brand-gold text-brand-violet font-extrabold text-xs sm:text-sm hover:brightness-105 transition-all shadow-sm flex items-center justify-center"
+              className="min-h-[44px] flex-shrink-0 px-5 py-3 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-indigo-300 via-indigo-200 to-indigo-400 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all text-xs sm:text-sm flex items-center justify-center border border-indigo-200/50"
             >
               Explore Study Suite
             </a>

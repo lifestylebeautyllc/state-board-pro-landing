@@ -139,60 +139,79 @@ export default function Home() {
       {/* ========================================================= */}
       <section
         id="hero"
-        className="w-full max-w-full box-border relative bg-brand-violet text-white pt-14 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 overflow-hidden"
+        className="w-full max-w-full box-border min-h-[600px] sm:min-h-[700px] lg:min-h-screen bg-gradient-to-b from-[#181622] via-[#1f1c2e] to-[#14121d] text-slate-100 relative overflow-hidden pt-14 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 flex flex-col justify-center"
       >
-        {/* Subtle decorative background gradient circles */}
-        <div className="absolute top-1/4 -left-20 w-80 sm:w-96 h-80 sm:h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-0 w-80 sm:w-[30rem] h-80 sm:h-[30rem] bg-brand-periwinkle/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Soft ambient radial highlights to illuminate the upper viewport */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-tr from-indigo-500/15 via-purple-400/10 to-orange-300/10 blur-[130px] pointer-events-none -z-10 rounded-full" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 box-border">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-brand-peach text-xs sm:text-sm font-semibold mb-6 sm:mb-8 backdrop-blur-md shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-brand-gold flex-shrink-0" />
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full border border-indigo-400/25 bg-indigo-950/50 text-indigo-200 backdrop-blur-md shadow-sm text-xs sm:text-sm font-semibold mb-6 sm:mb-8">
+              <ShieldCheck className="w-4 h-4 text-amber-400 flex-shrink-0" />
               <span>Tailored Specifically for Washington State Board Regulations</span>
             </div>
 
             {/* Headline - Adaptive typography across breakpoints */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.15] mb-6 text-white text-balance">
               Build Confidence. <br className="hidden sm:block" />
-              <span className="text-brand-gold">Optimize Prep Time.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-purple-200 to-amber-200">
+                Optimize Prep Time.
+              </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-base sm:text-lg lg:text-xl text-slate-100/90 font-normal leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto text-balance">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-300 font-normal leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto text-balance">
               The modern study suite built specifically for Washington State. We bring absolute clarity to state board materials so your students test without anxiety and your instructors teach without friction.
             </p>
 
-            {/* Primary CTA Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                id="hero-book-demo-btn"
-                onClick={openDemoModal}
-                className="w-full sm:w-auto min-h-[48px] px-8 py-4 rounded-xl bg-brand-gold text-brand-violet font-extrabold text-base sm:text-lg hover:brightness-105 active:scale-95 transition-all duration-200 shadow-xl flex items-center justify-center gap-3 group"
-              >
-                <span>Book a Live Demo</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+            {/* Primary CTA Button (Live Study Suite Link) */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a
+                  id="hero-launch-suite-btn"
+                  href="https://www.lifestyleexamedge.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-slate-950 bg-gradient-to-r from-amber-200 via-orange-200 to-amber-300 hover:from-amber-300 hover:to-orange-300 shadow-xl shadow-amber-500/20 hover:shadow-amber-500/35 transition-all duration-200 border border-amber-100/60 w-full sm:w-auto text-base sm:text-lg active:scale-95"
+                >
+                  <span>Launch Free Study Suite</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-slate-950" />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={openDemoModal}
+                  className="w-full sm:w-auto px-6 py-4 rounded-xl font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-sm sm:text-base flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <span>Book Campus Demo</span>
+                </button>
+              </div>
+
+              {/* Instant Access Sub-Label */}
+              <p className="mt-3.5 text-xs sm:text-sm text-slate-400 font-medium flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Instant Access • No Card Required</span>
+              </p>
             </div>
 
             {/* Trust Indicators / Stats Pill */}
-            <div className="mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            <div className="mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-indigo-500/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
               <div className="p-2 sm:p-3">
-                <div className="text-2xl sm:text-3xl font-black text-brand-gold">100%</div>
-                <div className="text-xs sm:text-sm text-brand-peach/90 font-medium mt-1">WA Specific Content</div>
+                <div className="text-2xl sm:text-3xl font-black text-indigo-200">100%</div>
+                <div className="text-xs sm:text-sm text-slate-400 font-medium mt-1">WA Specific Content</div>
               </div>
               <div className="p-2 sm:p-3">
-                <div className="text-2xl sm:text-3xl font-black text-brand-gold">Cosmo & Barber</div>
-                <div className="text-xs sm:text-sm text-brand-peach/90 font-medium mt-1">Dual Specialty Tracks</div>
+                <div className="text-2xl sm:text-3xl font-black text-indigo-200">Cosmo & Barber</div>
+                <div className="text-xs sm:text-sm text-slate-400 font-medium mt-1">Dual Specialty Tracks</div>
               </div>
               <div className="p-2 sm:p-3">
-                <div className="text-2xl sm:text-3xl font-black text-brand-gold">Written & Practical</div>
-                <div className="text-xs sm:text-sm text-brand-peach/90 font-medium mt-1">Complete Exam Coverage</div>
+                <div className="text-2xl sm:text-3xl font-black text-indigo-200">Written & Practical</div>
+                <div className="text-xs sm:text-sm text-slate-400 font-medium mt-1">Complete Exam Coverage</div>
               </div>
               <div className="p-2 sm:p-3">
-                <div className="text-2xl sm:text-3xl font-black text-brand-gold">Zero Guesswork</div>
-                <div className="text-xs sm:text-sm text-brand-peach/90 font-medium mt-1">Direct Proctor Audio Prep</div>
+                <div className="text-2xl sm:text-3xl font-black text-indigo-200">Zero Guesswork</div>
+                <div className="text-xs sm:text-sm text-slate-400 font-medium mt-1">Direct Proctor Audio Prep</div>
               </div>
             </div>
           </div>
@@ -402,16 +421,16 @@ export default function Home() {
       {/* ========================================================= */}
       <section
         id="features"
-        className="w-full max-w-full box-border bg-slate-950 text-white py-16 sm:py-20 lg:py-28 relative overflow-hidden"
+        className="w-full max-w-full box-border bg-[#0c0a17] text-slate-100 py-16 sm:py-20 lg:py-28 relative overflow-hidden border-t border-indigo-500/10"
       >
         {/* Ambient glow backgrounds */}
-        <div className="absolute top-10 -left-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-0 w-96 h-96 bg-brand-violet/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-10 -left-20 w-96 h-96 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-10 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 box-border">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 text-xs font-bold uppercase tracking-wider mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-400/25 bg-indigo-950/50 text-indigo-200 backdrop-blur-md shadow-sm text-xs font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               Complete Exam Architecture
             </span>
@@ -419,7 +438,7 @@ export default function Home() {
               Interactive 3D Study Suite
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed">
-              Separated by Written and Practical exam requirements. <span className="text-amber-400 font-semibold">Click or tap any card below</span> to interact with true-to-life 3D interface previews.
+              Separated by Written and Practical exam requirements. <span className="text-indigo-200 font-semibold">Click or tap any card below</span> to interact with true-to-life 3D interface previews.
             </p>
 
             {/* Segmented Track Controls (Tabs) */}
@@ -429,7 +448,7 @@ export default function Home() {
                 onClick={() => setActiveTab('all')}
                 className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active:scale-95 ${
                   activeTab === 'all'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-gradient-to-r from-indigo-300 via-indigo-200 to-indigo-400 text-slate-950 shadow-md font-bold'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -444,7 +463,7 @@ export default function Home() {
                 onClick={() => setActiveTab('written')}
                 className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active:scale-95 ${
                   activeTab === 'written'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-gradient-to-r from-indigo-300 via-indigo-200 to-indigo-400 text-slate-950 shadow-md font-bold'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -460,7 +479,7 @@ export default function Home() {
                 onClick={() => setActiveTab('practical')}
                 className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active:scale-95 ${
                   activeTab === 'practical'
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-gradient-to-r from-indigo-300 via-indigo-200 to-indigo-400 text-slate-950 shadow-md font-bold'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
               >
